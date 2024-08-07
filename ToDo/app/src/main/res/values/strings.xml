@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ToDo</string>
+    <string name="title_hint">Task Name</string>
+    <string name="messege_box">List items</string>
+    <string name="priority_msg">Priority</string>
+    <string name="add_btn">ADD</string>
+    <string-array name="priority">
+        <item>Low Priority</item>
+        <item>Medium Priority</item>
+        <item>High Priority</item>
+    </string-array>
 </resources>
