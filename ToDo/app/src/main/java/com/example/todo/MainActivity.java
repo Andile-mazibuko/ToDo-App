@@ -2,6 +2,7 @@ package com.example.todo;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     Cursor cursor;
     List<Task> tasks;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +34,29 @@ public class MainActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         cursor = databaseHelper.getAllItems();
         StringBuffer buffer = new StringBuffer();
+        Task task;
+        String title;
+        String priority;
+        String content;
+        int btnColor;
         while(cursor.moveToNext())
         {
+            title = cursor.getString(1);
+            priority = cursor.getString(2);
+            content = cursor.getString(3);
 
-            tasks.add(new Task(1,cursor.getString(1), cursor.getString(3),"hIGH" ));
+            if(priority.equalsIgnoreCase("Low Priority"))
+            {
+                btnColor = Color.GREEN;
+            }else if(priority.equalsIgnoreCase("Medium Priority"))
+            {
+                btnColor =  Color.YELLOW;
+            }
+            else
+            {
+                btnColor = Color.RED;            }
+
+            tasks.add(new Task(btnColor,title, content,priority ));
 
 
             buffer.append("ID :"+ cursor.getString(1) +"\n");

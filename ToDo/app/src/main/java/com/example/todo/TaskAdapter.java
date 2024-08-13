@@ -1,6 +1,7 @@
 package com.example.todo;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private List<Task> tasks;
     private Context context;
+
 
     public TaskAdapter(Context context, List<Task> tasks) {
         this.context = context;
@@ -51,6 +53,21 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
         holder.title.setText(tasks.get(position).getTitle());
         holder.date.setText(tasks.get(position).getDate());
+        holder.btn.setBackgroundColor(tasks.get(position).getColor());
+
+
+
+        /* if(tasks.get(position).getPriority().equalsIgnoreCase("Low Priority"))
+        {
+            holder.btn.setBackgroundColor(Color.GREEN);
+        }else if(tasks.get(position).getPriority().equalsIgnoreCase("Medium Priority"))
+        {
+            holder.btn.setBackgroundColor(Color.YELLOW);
+        }
+        else
+        {
+            holder.btn.setBackgroundColor(Color.RED);
+        }*/
     }
 
     @Override
