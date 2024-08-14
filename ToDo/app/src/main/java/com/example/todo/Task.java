@@ -2,13 +2,22 @@ package com.example.todo;
 
 public class Task {
     private int color;
-    private String title,date,priority;
+    private String content,title,date,priority;
 
-    public Task(int color, String title, String date, String priority) {
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Task(int color, String title, String date, String priority, String content) {
         this.color = color;
         this.title = title;
         this.date = date;
         this.priority = priority;
+        this.content = content;
     }
 
     public int getColor() {

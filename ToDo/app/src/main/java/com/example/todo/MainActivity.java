@@ -35,16 +35,14 @@ public class MainActivity extends AppCompatActivity {
         cursor = databaseHelper.getAllItems();
         StringBuffer buffer = new StringBuffer();
         Task task;
-        String title;
-        String priority;
-        String content;
+        String title,priority,content, date;
         int btnColor;
         while(cursor.moveToNext())
         {
             title = cursor.getString(1);
             priority = cursor.getString(2);
             content = cursor.getString(3);
-
+            date = cursor.getString(4);
             if(priority.equalsIgnoreCase("Low Priority"))
             {
                 btnColor = Color.GREEN;
@@ -56,13 +54,13 @@ public class MainActivity extends AppCompatActivity {
             {
                 btnColor = Color.RED;            }
 
-            tasks.add(new Task(btnColor,title, content,priority ));
+            tasks.add(new Task(btnColor,title, " ",priority,content));
 
 
-            buffer.append("ID :"+ cursor.getString(1) +"\n");
+            /*buffer.append("ID :"+ cursor.getString(1) +"\n");
 
             buffer.append("Title: "+ cursor.getString(2) +"\n");
-            buffer.append("Content" + cursor.getString(3) +"\n");
+            buffer.append("Content" + cursor.getString(3) +"\n");*/
 
 
         }

@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.Date;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "list_db";
@@ -16,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String PRIORITY = "priority";
     private static final int DB_VERSION = 1;
     private static final String TABLE_NAME = "list_tbl";
-
+    private static final String TASK_DATE = "task_date";
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null,DB_VERSION);
         //CREATE DATABASE
@@ -25,7 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //CREATE TABLE
-        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + ITEM_TITLE + " TEXT," + PRIORITY +"  TEXT,"+ TASK_LIST +"  TEXT)") ;
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + ITEM_TITLE + " TEXT," + PRIORITY +"  TEXT,"+ TASK_LIST +"  TEXT,"+ TASK_DATE +" TEXT)") ;
     }
 
     @Override
@@ -40,6 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(ITEM_TITLE,title);
         contentValues.put(TASK_LIST,content);
         contentValues.put(PRIORITY,priority);
+        contentValues.put(TASK_DATE, new Date().getDate()+"");
 
         sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
 
