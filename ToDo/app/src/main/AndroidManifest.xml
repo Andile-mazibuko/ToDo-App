@@ -13,9 +13,12 @@
         android:theme="@style/Theme.ToDo"
         tools:targetApi="31">
         <activity
+            android:name=".ItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddActiviy"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

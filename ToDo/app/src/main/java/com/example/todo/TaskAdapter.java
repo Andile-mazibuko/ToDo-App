@@ -60,12 +60,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(context,ItemActivity.class);
-                intent.putExtra("title",tasks.get(position).getTitle());
-                intent.putExtra("content",tasks.get(position).getDate());
-                intent.putExtra("priority",tasks.get(position).getPriority());
 
-                context.startActivity(intent);*/
+                Intent intent = new Intent(context,ItemActivity.class);
+
+                    intent.putExtra("title",tasks.get(position).getTitle());
+                    intent.putExtra("content",tasks.get(position).getDate());
+                    intent.putExtra("priority",tasks.get(position).getPriority());
+                    intent.putExtra("date",tasks.get(position).getDate());
+                    
+                context.startActivity(intent);
             }
         });
 
