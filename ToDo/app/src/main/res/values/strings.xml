@@ -5,6 +5,7 @@
     <string name="priority_msg">Priority</string>
     <string name="add_btn">ADD</string>
     <string name="task_title">Task</string>
+    <string name="task_due">Task Due date</string>
     <string-array name="priority">
         <item>Low Priority</item>
         <item>Medium Priority</item>

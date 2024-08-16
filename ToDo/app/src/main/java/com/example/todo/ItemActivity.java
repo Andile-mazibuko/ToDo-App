@@ -2,6 +2,7 @@ package com.example.todo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -38,6 +39,13 @@ public class ItemActivity extends AppCompatActivity {
         dateDisplay.setText(date);
 
 
+
+    }
+
+    public void backButtonClicked(View view)
+    {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
 
     }
 }

@@ -35,14 +35,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void addItem(String title,String content,String priority)
+    public void addItem(String title,String content,String priority,String taskDue)
     {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ITEM_TITLE,title);
         contentValues.put(TASK_LIST,content);
         contentValues.put(PRIORITY,priority);
-        contentValues.put(TASK_DATE, new Date().getDate()+"");
+        contentValues.put(TASK_DATE, taskDue);
 
         sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
 
