@@ -3,6 +3,7 @@ package com.example.todo;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,9 +54,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
+
         holder.title.setText(tasks.get(position).getTitle());
         holder.date.setText(tasks.get(position).getDate());
         holder.btn.setBackgroundColor(tasks.get(position).getColor());
+
+        //To remove an error/warning about not treating position as a fixed value
+        int pos = position;
         holder.cardView.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -63,15 +68,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
                 Intent intent = new Intent(context,ItemActivity.class);
 
-                    intent.putExtra("title",tasks.get(position).getTitle());
-                    intent.putExtra("content",tasks.get(position).getDate());
-                    intent.putExtra("priority",tasks.get(position).getPriority());
-                    intent.putExtra("date",tasks.get(position).getDate());
+                    intent.putExtra("title",tasks.get(pos).getTitle());
+
+                    intent.putExtra("content",tasks.get(pos).getContent());
+                    Log.d("CONTENT",tasks.get(pos).getContent());
+
+                    intent.putExtra("priority",tasks.get(pos).getPriority());
+                    Log.d("PRIORITY",tasks.get(pos).getContent());
+
+                    intent.putExtra("date",tasks.get(pos).getDate());
                     
                 context.startActivity(intent);
             }
         });
-
 
 
     }
