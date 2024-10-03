@@ -35,6 +35,7 @@ public class AddActiviy extends AppCompatActivity {
     private TextView taskDueDate;
     EditText title;
     AutoCompleteTextView textView;
+
     EditText content;
     //TO BE CHANGED: date is set for testing purposes
     String taskDeadLine = new Date().toString();

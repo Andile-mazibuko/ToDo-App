@@ -56,9 +56,18 @@ public class MainActivity extends AppCompatActivity {
             }
             else
             {
-                btnColor = Color.RED;            }
+                btnColor = Color.RED;            
+            }
 
             tasks.add(new Task(btnColor,title, date,priority,content));
+
+
+
+            /*buffer.append("ID :"+ cursor.getString(1) +"\n");
+
+            buffer.append("Title: "+ cursor.getString(2) +"\n");
+            buffer.append("Content" + cursor.getString(3) +"\n");*/
+
 
         }
 
@@ -88,9 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        
-
-
         return super.onOptionsItemSelected(item);
     }
 }
