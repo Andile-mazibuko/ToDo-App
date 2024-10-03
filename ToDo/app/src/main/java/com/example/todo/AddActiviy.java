@@ -31,6 +31,7 @@ public class AddActiviy extends AppCompatActivity {
     private TextView taskDueDate;
     EditText title;
     AutoCompleteTextView textView;
+    //EditText content;
     TextInputEditText content;
     String taskDeadLine = " ";
     @Override

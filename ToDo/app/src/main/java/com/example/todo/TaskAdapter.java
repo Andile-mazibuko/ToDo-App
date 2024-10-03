@@ -71,10 +71,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
                     intent.putExtra("title",tasks.get(pos).getTitle());
 
                     intent.putExtra("content",tasks.get(pos).getContent());
-                    Log.d("CONTENT",tasks.get(pos).getContent());
+                    //Log.d("CONTENT",tasks.get(pos).getContent());
 
                     intent.putExtra("priority",tasks.get(pos).getPriority());
-                    Log.d("PRIORITY",tasks.get(pos).getContent());
+                    //Log.d("PRIORITY",tasks.get(pos).getContent());
 
                     intent.putExtra("date",tasks.get(pos).getDate());
                     
