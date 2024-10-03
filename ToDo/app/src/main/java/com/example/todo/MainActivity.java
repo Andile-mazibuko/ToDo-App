@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     Cursor cursor;
     List<Task> tasks;
+    TextView taskDueDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         //tasks.add()
         databaseHelper = new DatabaseHelper(this);
         cursor = databaseHelper.getAllItems();
-        StringBuffer buffer = new StringBuffer();
+
         Task task;
         String title,priority,content, date;
         int btnColor;
@@ -57,14 +58,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 btnColor = Color.RED;            }
 
-            tasks.add(new Task(btnColor,title, " ",priority,content));
-
-
-            /*buffer.append("ID :"+ cursor.getString(1) +"\n");
-
-            buffer.append("Title: "+ cursor.getString(2) +"\n");
-            buffer.append("Content" + cursor.getString(3) +"\n");*/
-
+            tasks.add(new Task(btnColor,title, date,priority,content));
 
         }
 
@@ -75,21 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //RE
-
-
-
-        //
-
-
-
-        /*
         databaseHelper = new DatabaseHelper(this);
 
-
-        //Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-        recyclerview.setText(buffer.toString());
-        */
 
     }
     public void openAddItemActivity(View v)

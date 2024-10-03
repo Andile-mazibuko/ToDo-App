@@ -78,8 +78,9 @@
         android:text="@string/task_due"
         android:drawableRight="@drawable/calender"
         android:drawablePadding="5dp"
-        android:gravity="center"
+        android:clickable="true"
         android:onClick="getTaskDueDate"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/title"
         app:layout_constraintStart_toStartOf="parent" />
 

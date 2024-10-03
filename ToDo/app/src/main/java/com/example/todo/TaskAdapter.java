@@ -56,6 +56,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.title.setText(tasks.get(position).getTitle());
         holder.date.setText(tasks.get(position).getDate());
         holder.btn.setBackgroundColor(tasks.get(position).getColor());
+        Task task = tasks.get(position);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -63,10 +64,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
                 Intent intent = new Intent(context,ItemActivity.class);
 
-                    intent.putExtra("title",tasks.get(position).getTitle());
-                    intent.putExtra("content",tasks.get(position).getDate());
-                    intent.putExtra("priority",tasks.get(position).getPriority());
-                    intent.putExtra("date",tasks.get(position).getDate());
+                intent.putExtra("content",task.getContent());
+                intent.putExtra("title",task.getTitle());
+
+                intent.putExtra("priority",task.getPriority());
+                intent.putExtra("date",task.getDate());
                     
                 context.startActivity(intent);
             }

@@ -1,6 +1,7 @@
 package com.example.todo;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class AddActiviy extends AppCompatActivity {
 
     String[] priority;
@@ -31,8 +35,11 @@ public class AddActiviy extends AppCompatActivity {
     private TextView taskDueDate;
     EditText title;
     AutoCompleteTextView textView;
-    TextInputEditText content;
-    String taskDeadLine = " ";
+    EditText content;
+    //TO BE CHANGED: date is set for testing purposes
+    String taskDeadLine = new Date().toString();
+    private int mYear, mMonth, mDay, mHour, mMinute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +56,28 @@ public class AddActiviy extends AppCompatActivity {
 
         title = findViewById(R.id.title);
         // textView = findViewById(R.id.select_prio);
-        content = findViewById(R.id.item_list);
+        content = (EditText) findViewById(R.id.item_list);
 
+       /*taskDueDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AddActiviy.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                /*
+                * i  = Year
+                * i2 = Month(0-11)
+                * i3 = day
+
+                taskDeadLine = String.valueOf(i) + " / " + String.valueOf(i1+1)+ " / " + String.valueOf(i2);
+            }
+        },mYear,mMonth,mDay);
+            }
+        });*/
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -71,8 +98,13 @@ public class AddActiviy extends AppCompatActivity {
         Intent intent = new Intent(AddActiviy.this,MainActivity.class);
         startActivity(intent);
     }
-    public void getTaskDueDate()
+
+   public void getTaskDueDate()
     {
+        Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
@@ -80,9 +112,10 @@ public class AddActiviy extends AppCompatActivity {
                 * i  = Year
                 * i2 = Month(0-11)
                 * i3 = day
-                * */
+                **/
                 taskDeadLine = String.valueOf(i) + " / " + String.valueOf(i1+1)+ " / " + String.valueOf(i2);
             }
-        },2024,9,15);
+        },mYear,mMonth,mDay);
+        datePickerDialog.show();
     }
 }
